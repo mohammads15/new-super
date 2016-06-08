@@ -27,7 +27,7 @@ local function check_member_autorealm(cb_extra, success, result)
       end
       data[tostring(realms)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-      return send_large_msg(receiver, 'Welcome to your new realm !')
+      return send_large_msg(receiver, 'خوش آمدید به رلم جدید :-)')
     end
   end
 end
@@ -57,7 +57,7 @@ local function check_member_realm_add(cb_extra, success, result)
       end
       data[tostring(realms)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-      return send_large_msg(receiver, 'Realm has been added!')
+      return send_large_msg(receiver, 'رلم با موفقیت اضافه شد ✅')
     end
   end
 end
@@ -89,7 +89,7 @@ function check_member_group(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-      return send_large_msg(receiver, 'You have been promoted as the owner.')
+      return send_large_msg(receiver, 'به گروه جدید خوش آمدید :-)')
     end
   end
 end
@@ -122,7 +122,7 @@ local function check_member_modadd(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-      return send_large_msg(receiver, 'Group is added and you have been promoted as the owner ')
+      return send_large_msg(receiver, 'گروه با موفقیت اضافه شد ✅')
     end
   end
 end
@@ -157,7 +157,7 @@ local function check_member_realmrem(cb_extra, success, result)
       end
       data[tostring(realms)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
-      return send_large_msg(receiver, 'Realm has been removed!')
+      return send_large_msg(receiver, 'رلم با موفقیت حذف شد ❌')
     end
   end
 end
@@ -178,14 +178,14 @@ local function check_member_modrem(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
-      return send_large_msg(receiver, 'Group has been removed')
+      return send_large_msg(receiver, 'گروه با موفقیت حذف شد ❌')
     end
   end
 end
 --End Check Member
 function show_group_settingsmod(msg, target)
  	if not is_momod(msg) then
-    	return "For moderators only!"
+    	return "فقط مدیران دسترسی دارند❗️"
   	end
   	local data = load_data(_config.moderation.data)
     if data[tostring(target)] then
@@ -233,19 +233,19 @@ local function set_descriptionmod(msg, data, target, about)
   if not is_momod(msg) then
     return
   end
-  local data_cat = 'description'
+  local data_cat = 'توضیحات'
   data[tostring(target)][data_cat] = about
   save_data(_config.moderation.data, data)
-  return 'Set group description to:\n'..about
+  return '💡توضیحات گروه تنظیم شد به :\n'..about
 end
 local function get_description(msg, data)
-  local data_cat = 'description'
+  local data_cat = 'توضیحات'
   if not data[tostring(msg.to.id)][data_cat] then
-    return 'No description available.'
+    return 'هیچ توضیحاتی در این گروه وجود ندارد❗️'
   end
   local about = data[tostring(msg.to.id)][data_cat]
   local about = string.gsub(msg.to.print_name, "_", " ")..':\n\n'..about
-  return 'About '..about
+  return 'دریاره'..about
 end
 local function lock_group_arabic(msg, data, target)
   if not is_momod(msg) then
@@ -253,11 +253,11 @@ local function lock_group_arabic(msg, data, target)
   end
   local group_arabic_lock = data[tostring(target)]['settings']['lock_arabic']
   if group_arabic_lock == 'yes' then
-    return 'Arabic is already locked'
+    return 'عربی در حال حاضر بسته است 🔒'
   else
     data[tostring(target)]['settings']['lock_arabic'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Arabic has been locked'
+    return 'عربی قفل شد 🔒'
   end
 end
 
@@ -267,11 +267,11 @@ local function unlock_group_arabic(msg, data, target)
   end
   local group_arabic_lock = data[tostring(target)]['settings']['lock_arabic']
   if group_arabic_lock == 'no' then
-    return 'Arabic is already unlocked'
+    return 'عربی  در حال حاضر باز است 🔓'
   else
     data[tostring(target)]['settings']['lock_arabic'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Arabic has been unlocked'
+    return 'عربی باز شد 🔓'
   end
 end
 
@@ -281,11 +281,11 @@ local function lock_group_bots(msg, data, target)
   end
   local group_bots_lock = data[tostring(target)]['settings']['lock_bots']
   if group_bots_lock == 'yes' then
-    return 'Bots protection is already enabled'
+    return 'ورود رباتها در حال حاضر آزاد است 🔓
   else
     data[tostring(target)]['settings']['lock_bots'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Bots protection has been enabled'
+    return 'ورود رباتها  آزاد شد🔓'
   end
 end
 
@@ -295,11 +295,11 @@ local function unlock_group_bots(msg, data, target)
   end
   local group_bots_lock = data[tostring(target)]['settings']['lock_bots']
   if group_bots_lock == 'no' then
-    return 'Bots protection is already disabled'
+    return 'ورود رباتها در  حال حاضر قفل است 🔒'
   else
     data[tostring(target)]['settings']['lock_bots'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Bots protection has been disabled'
+    return 'ورود رباتها قفل شد 🔒'
   end
 end
 
@@ -325,11 +325,11 @@ local function unlock_group_namemod(msg, data, target)
   local group_name_set = data[tostring(target)]['settings']['set_name']
   local group_name_lock = data[tostring(target)]['settings']['lock_name']
   if group_name_lock == 'no' then
-    return 'Group name is already unlocked'
+    return 'نام گروه از قبل قفل شده 🔒'
   else
     data[tostring(target)]['settings']['lock_name'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Group name has been unlocked'
+    return 'نام گروه باز شد 🔓'
   end
 end
 local function lock_group_floodmod(msg, data, target)
@@ -338,11 +338,11 @@ local function lock_group_floodmod(msg, data, target)
   end
   local group_flood_lock = data[tostring(target)]['settings']['flood']
   if group_flood_lock == 'yes' then
-    return 'Group flood is locked'
+    return 'اسپم در گروه قفل شده است 🔒'
   else
     data[tostring(target)]['settings']['flood'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Group flood has been locked'
+    return 'اسپم در گروه قفل است 🔒'
   end
 end
 
@@ -351,15 +351,15 @@ local function unlock_group_floodmod(msg, data, target)
 	return 
   end
   if not is_owner(msg) then
-    return "Only owners can unlock flood"
+    return "فقط مدیران و صاحبان توانایی اسپم دادن را دارند❗️"
   end
   local group_flood_lock = data[tostring(target)]['settings']['flood']
   if group_flood_lock == 'no' then
-    return 'Group flood is not locked'
+    return 'اسپم در گروه قفل نیست 🔓'
   else
     data[tostring(target)]['settings']['flood'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Group flood has been unlocked'
+    return 'اسپم در گروه آزاد شد 🔓'
   end
 end
 
@@ -369,7 +369,7 @@ local function lock_group_membermod(msg, data, target)
   end
   local group_member_lock = data[tostring(target)]['settings']['lock_member']
   if group_member_lock == 'yes' then
-    return 'Group members are already locked'
+    return 'اعضای گروه در حال حاضر قفل شده است 🔒'
   else
     data[tostring(target)]['settings']['lock_member'] = 'yes'
     save_data(_config.moderation.data, data)
