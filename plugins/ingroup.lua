@@ -403,12 +403,12 @@ local function set_public_membermod(msg, data, target)
 	save_data(_config.moderation.data, data)
   end
   if group_member_lock == 'yes' then
-    return 'Group is already public'
+    return 'گروه در حال حاضر عمومی است ❗️'
   else
     data[tostring(target)]['settings']['public'] = 'yes'
     save_data(_config.moderation.data, data)
   end
-  return 'Group is now: public'
+  return 'گروه در حال حاضر:عمومی ❕'
 end
 
 local function unset_public_membermod(msg, data, target)
@@ -422,11 +422,11 @@ local function unset_public_membermod(msg, data, target)
 	save_data(_config.moderation.data, data)
   end
   if group_member_lock == 'no' then
-    return 'Group is not public'
+    return 'گروه عمومی نیست ‼️'
   else
     data[tostring(target)]['settings']['public'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Group is now: not public'
+    return 'گروه در حال حاضر:عمومی نیست ⁉️'
   end
 end
 
@@ -436,12 +436,12 @@ local function lock_group_leave(msg, data, target)
   end
   local leave_ban = data[tostring(target)]['settings']['leave_ban']
   if leave_ban == 'yes' then
-    return 'Leaving users will be banned'
+    return 'اگر کاربری گروه را ترک کند از گروه محروم میشود 🔰'
   else
     data[tostring(target)]['settings']['leave_ban'] = 'yes'
     save_data(_config.moderation.data, data)
   end
-  return 'Leaving users will be banned'
+  return 'اگر کاربری گروه را ترک کند از گروه محروم میشود 🔰'
 end
 
 local function unlock_group_leave(msg, data, target)
@@ -450,11 +450,11 @@ local function unlock_group_leave(msg, data, target)
   end
   local leave_ban = data[tostring(msg.to.id)]['settings']['leave_ban']
   if leave_ban == 'no' then
-    return 'Leaving users will not be banned'
+    return 'کاربر  اگر گروه را ترک ند محروم نمی شود 💢'
   else
     data[tostring(target)]['settings']['leave_ban'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Leaving users will not be banned'
+    return 'کاربر  اگر گروه را ترک ند محروم نمی شود 💢'
   end
 end
 
@@ -464,11 +464,11 @@ local function unlock_group_photomod(msg, data, target)
   end
   local group_photo_lock = data[tostring(target)]['settings']['lock_photo']
   if group_photo_lock == 'no' then
-    return 'Group photo is not locked'
+    return 'عکس گروه قفل نیست 🔓'
   else
     data[tostring(target)]['settings']['lock_photo'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Group photo has been unlocked'
+    return 'عکس گروه باز شد 🔓'
   end
 end
 
@@ -478,11 +478,11 @@ local function lock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'yes' then
-    return 'Link posting is already locked'
+    return 'ارسال لینک در حال حاضر قفل است 🔒'
   else
     data[tostring(target)]['settings']['lock_link'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Link posting has been locked'
+    return 'ارسال لینک قفل شد 🔒'
   end
 end
 
@@ -492,11 +492,11 @@ local function unlock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'no' then
-    return 'Link posting is not locked'
+    return 'ارسال لینک قفل نیست 🔓'
   else
     data[tostring(target)]['settings']['lock_link'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Link posting has been unlocked'
+    return 'ارسال لینک قفل نیست 🔓'
   end
 end
 
@@ -506,11 +506,11 @@ local function lock_group_rtl(msg, data, target)
   end
   local group_rtl_lock = data[tostring(target)]['settings']['lock_rtl']
   if group_rtl_lock == 'yes' then
-    return 'RTL is already locked'
+    return 'در حال حاضر RTL قفل است 🔒'
   else
     data[tostring(target)]['settings']['lock_rtl'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'RTL has been locked'
+    return ' RTL قفل است 🔒'
   end
 end
 
@@ -520,11 +520,11 @@ local function unlock_group_rtl(msg, data, target)
   end
   local group_rtl_lock = data[tostring(target)]['settings']['lock_rtl']
   if group_rtl_lock == 'no' then
-    return 'RTL is already unlocked'
+    return 'در حال حاضر RTL قفل نیست🔓'
   else
     data[tostring(target)]['settings']['lock_rtl'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'RTL has been unlocked'
+    return ' RTL باز شد🔓'
   end
 end
 
@@ -534,11 +534,11 @@ local function lock_group_sticker(msg, data, target)
   end
   local group_sticker_lock = data[tostring(target)]['settings']['lock_sticker']
   if group_sticker_lock == 'yes' then
-    return 'Sticker posting is already locked'
+    return 'استیکر فرستادن در گروه در حال حاضر قفل است 🔒'
   else
     data[tostring(target)]['settings']['lock_sticker'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Sticker posting has been locked'
+    return 'استیکر فرستادن در گروه قفل است 🔒'
   end
 end
 
@@ -548,11 +548,11 @@ local function unlock_group_sticker(msg, data, target)
   end
   local group_sticker_lock = data[tostring(target)]['settings']['lock_sticker']
   if group_sticker_lock == 'no' then
-    return 'Sticker posting is already unlocked'
+    return 'استیکر فرستادن در گروه در حال حاضر باز است 🔓'
   else
     data[tostring(target)]['settings']['lock_sticker'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Sticker posting has been unlocked'
+    return 'استیکر فرستادن باز شد 🔓'
   end
 end
 
@@ -566,7 +566,7 @@ local function lock_group_contacts(msg, data, target)
   else
     data[tostring(target)]['settings']['lock_contacts'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Contact posting has been locked'
+    return 'شماره ارسال کردن درحال حاضر قفل است🔒'
   end
 end
 
@@ -576,11 +576,11 @@ local function unlock_group_contacts(msg, data, target)
   end
   local group_contacts_lock = data[tostring(target)]['settings']['lock_contacts']
   if group_contacts_lock == 'no' then
-    return 'Contact posting is already unlocked'
+    return 'شماره ارسال کردن درحال حاضر باز است 🔓'
   else
     data[tostring(target)]['settings']['lock_contacts'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Contact posting has been unlocked'
+    return 'شماره ارسال کردن باز است 🔓'
   end
 end
 
@@ -614,12 +614,12 @@ end
 
 local function set_rulesmod(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "فقط مدیران دسترسی دارند❗️"
   end
   local data_cat = 'rules'
   data[tostring(target)][data_cat] = rules
   save_data(_config.moderation.data, data)
-  return 'Set group rules to:\n\n'..rules
+  return '💡قوانین گروه تظیم  شد به :\n\n'..rules
 end
 local function modadd(msg)
   -- superuser and admins only (because sudo are always has privilege)
@@ -627,11 +627,11 @@ local function modadd(msg)
 	return
   end
   if not is_admin1(msg) then
-    return "You're not admin"
-  end
+    return "شما ادمین نیستید ❌"
+  end 
   local data = load_data(_config.moderation.data)
   if is_group(msg) then
-    return 'Group is already added.'
+    return 'گروه با موفقیت اضافه شد ✅'
   end
     receiver = get_receiver(msg)
     chat_info(receiver, check_member_modadd,{receiver=receiver, data=data, msg = msg})
@@ -642,11 +642,11 @@ local function realmadd(msg)
 	return
   end
   if not is_admin1(msg) then
-    return "You're not admin"
+    return "شما ادمین نیستید ❌"
   end
   local data = load_data(_config.moderation.data)
   if is_realm(msg) then
-    return 'Realm is already added.'
+    return 'رلم با موفقیت اضافه شد ✅'
   end
     receiver = get_receiver(msg)
     chat_info(receiver, check_member_realm_add,{receiver=receiver, data=data, msg = msg})
@@ -655,11 +655,11 @@ end
 function modrem(msg)
   -- superuser and admins only (because sudo are always has privilege)
   if not is_admin1(msg) then
-    return "You're not admin"
+    return "شما ادمین نیستید ❌"
   end
   local data = load_data(_config.moderation.data)
   if not is_group(msg) then
-    return 'Group is not added.'
+    return 'گروه اضافه نشد ❌'
   end
     receiver = get_receiver(msg)
     chat_info(receiver, check_member_modrem,{receiver=receiver, data=data, msg = msg})
@@ -668,11 +668,11 @@ end
 function realmrem(msg)
   -- superuser and admins only (because sudo are always has privilege)
   if not is_admin1(msg) then
-    return "You're not admin"
+    return "شما ادمین نیستید ❌"
   end
   local data = load_data(_config.moderation.data)
   if not is_realm(msg) then
-    return 'Realm is not added.'
+    return 'رلم اضافه نشد ❌'
   end
     receiver = get_receiver(msg)
     chat_info(receiver, check_member_realmrem,{receiver=receiver, data=data, msg = msg})
@@ -680,10 +680,10 @@ end
 local function get_rules(msg, data)
   local data_cat = 'rules'
   if not data[tostring(msg.to.id)][data_cat] then
-    return 'No rules available.'
+    return 'هیچ قوانین در گروه وجود ندارد ‼️'
   end
   local rules = data[tostring(msg.to.id)][data_cat]
-  local rules = 'Chat rules:\n\n'..rules
+  local rules = '💡قوانین گروه : \n\n'..rules
   return rules
 end
 
@@ -703,7 +703,7 @@ local function set_group_photo(msg, success, result)
     send_large_msg(receiver, 'Photo saved!', ok_cb, false)
   else
     print('Error downloading: '..msg.id)
-    send_large_msg(receiver, 'Failed, please try again!', ok_cb, false)
+    send_large_msg(receiver, 'خطا , لطفا دوباره امتحان کنید ⁉️', ok_cb, false)
   end
 end
 
@@ -711,14 +711,14 @@ local function promote(receiver, member_username, member_id)
   local data = load_data(_config.moderation.data)
   local group = string.gsub(receiver, 'chat#id', '')
   if not data[group] then
-    return send_large_msg(receiver, 'Group is not added.')
+    return send_large_msg(receiver, 'گروه اضافه نشد ❌')
   end
   if data[group]['moderators'][tostring(member_id)] then
-    return send_large_msg(receiver, member_username..' is already a moderator.')
+    return send_large_msg(receiver, member_username..' ⭕️در حال حاضر مدیر است . ')
   end
   data[group]['moderators'][tostring(member_id)] = member_username
   save_data(_config.moderation.data, data)
-  return send_large_msg(receiver, member_username..' has been promoted.')
+  return send_large_msg(receiver, member_username..' 🔺ترفیع یافت . ')
 end
 
 local function promote_by_reply(extra, success, result)
@@ -739,14 +739,14 @@ local function demote(receiver, member_username, member_id)
   local data = load_data(_config.moderation.data)
   local group = string.gsub(receiver, 'chat#id', '')
   if not data[group] then
-    return send_large_msg(receiver, 'Group is not added.')
+    return send_large_msg(receiver, 'گروه اضافه نشد ❌')
   end
   if not data[group]['moderators'][tostring(member_id)] then
-    return send_large_msg(receiver, member_username..' is not a moderator.')
+    return send_large_msg(receiver, member_username..' ❌مدیر نیست . ')
   end
   data[group]['moderators'][tostring(member_id)] = nil
   save_data(_config.moderation.data, data)
-  return send_large_msg(receiver, member_username..' has been demoted.')
+  return send_large_msg(receiver, member_username..'🔻خلع مقام شد.')
 end
 
 local function demote_by_reply(extra, success, result)
@@ -770,8 +770,8 @@ local function setowner_by_reply(extra, success, result)
   local name_log = msg.from.print_name:gsub("_", " ")
   data[tostring(msg.to.id)]['set_owner'] = tostring(msg.from.id)
       save_data(_config.moderation.data, data)
-      savelog(msg.to.id, name_log.." ["..msg.from.id.."] set ["..msg.from.id.."] as owner")
-      local text = msg.from.print_name:gsub("_", " ").." is the owner now"
+      savelog(msg.to.id, name_log.." ["..msg.from.id.."] به ["..msg.from.id.."] صاحب گروه اضافه شد.")
+      local text = msg.from.print_name:gsub("_", " ").." 💠در حال حاضر صاحب گروه است ."
       return send_large_msg(receiver, text)
 end
 
@@ -805,10 +805,10 @@ local function mute_user_callback(extra, success, result)
 	local chat_id = string.gsub(receiver, 'channel#id', '')
 	if is_muted_user(chat_id, user_id) then
 		mute_user(chat_id, user_id)
-		send_large_msg(receiver, "["..user_id.."] removed from the muted user list")
+		send_large_msg(receiver, "["..user_id.."] ✅ کاربر از لیست موت شده ها پاک شد .")
 	else
 		unmute_user(chat_id, user_id)
-		send_large_msg(receiver, " ["..user_id.."] added to the muted user list")
+		send_large_msg(receiver, " ["..user_id.."] 🚫 کاربر به لیست موت شده ها اضافه شد .")
 	end
 end
 
@@ -816,14 +816,14 @@ local function modlist(msg)
   local data = load_data(_config.moderation.data)
   local groups = "groups"
   if not data[tostring(groups)][tostring(msg.to.id)] then
-    return 'Group is not added.'
+    return 'گروه اضافه نشد ❌'
   end
   -- determine if table is empty
   if next(data[tostring(msg.to.id)]['moderators']) == nil then --fix way
-    return 'No moderator in this group.'
+    return '❗️هیچ مدیری در این گروه وجود ندارد .'
   end
   local i = 1
-  local message = '\nList of moderators for ' .. string.gsub(msg.to.print_name, '_', ' ') .. ':\n'
+  local message = '\nلیست مدیرها برای ' .. string.gsub(msg.to.print_name, '_', ' ') .. ':\n'
   for k,v in pairs(data[tostring(msg.to.id)]['moderators']) do
     message = message ..i..' - '..v..' [' ..k.. '] \n'
     i = i + 1
@@ -845,10 +845,10 @@ local function callback_mute_res(extra, success, result)
 	local chat_id = string.gsub(receiver, 'chat#id', '')
 	if is_muted_user(chat_id, user_id) then
 		unmute_user(chat_id, user_id)
-		send_large_msg(receiver, " ["..user_id.."] removed from muted user list")
+		send_large_msg(receiver, " ["..user_id.."] ✅ کاربر از لیست موت شده ها پاک شد .")
 	else
 		mute_user(chat_id, user_id)
-		send_large_msg(receiver, " ["..user_id.."] added to muted user list")
+		send_large_msg(receiver, " ["..user_id.."] 🚫 کاربر به لیست موت شده ها اضافه شد .")
 	end
 end
 
